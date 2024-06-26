@@ -18,9 +18,9 @@ impl RandGen {
 
     pub fn gen_rand_test(&mut self) {
         let mut sum = self.sum;
-        for _ in 0..2 {
+        for i in 0..10 {
             let num = self.rng.gen_range(0..=50_000);
-            println!("num: {}", num);
+            println!("the {} num: {}", i, num);
             sum += num;
         }
         self.sum = sum;
@@ -29,9 +29,11 @@ impl RandGen {
 
 fn main() {
     let mut rng = rand::rngs::StdRng::seed_from_u64(SEED);
-    for _ in 0..10 {
-        println!("Integer: {}", rng.gen_range(0..=50_000));
+    for i in 0..10 {
+        println!("the {} num: {}", i, rng.gen_range(0..=50_000));
     }
+
+    println!();
     let mut gen = RandGen::new();
     gen.gen_rand_test();
 }
